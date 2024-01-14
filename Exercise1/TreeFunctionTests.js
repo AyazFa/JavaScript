@@ -12,10 +12,10 @@ const input = {
 let level = 0;
 function tree(input) {
     console.log("-".repeat(level), input["name"]);
-    if (input?.items != undefined) {
+    if (input?.items !== undefined) {
         input.level = level + 1;
         level = input.level;
-        for (var i = 0; i < input.items.length; i++) {
+        for (let i = 0; i < input.items.length; i++) {
             input.items[i].level = input.level;
             level = input.items[i].level;
             tree(input.items[i]);
