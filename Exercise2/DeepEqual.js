@@ -15,7 +15,7 @@ const bear = {
 };
 const arr1 = [0,1,2,3];
 const arr2 = [0,1,2,4];
- 
+
 function areEqual(actual, expected) {
     if (typeof actual !== typeof expected){
         return 'Разные типы';
@@ -27,7 +27,7 @@ function areEqual(actual, expected) {
         case "boolean":
         case "undefined":
             if(actual !== expected) {
-                return `${actual} не равно ${expected}.`
+                return ` Значение ${actual} не равно ${expected}.`
             }
             break;    
         case "object":
@@ -57,7 +57,7 @@ function equalArray(actual, expected) {
             message = message.concat(`[${i}]`) 
         }
         else{
-            message = `${res}. Остановка на элементе ${i} массива. Итоговый массив: ` + message.concat(`[${i}]`)
+            message = message.concat(`[${i}]`) + `.${res}`
             break; 
         }
     }
@@ -80,7 +80,7 @@ function equalObject(actual, expected) {
             message = message.concat(`${propsActual[i]}.`)
         }
         else{
-            errMessage = `${res} Цепочка: `+ message.concat(`${propsActual[i]}.`)
+            errMessage = message.concat(`${propsActual[i]}.`) + `${res}`;
             break; 
         }
     }
@@ -90,10 +90,10 @@ function equalObject(actual, expected) {
 function deepEqual(actual,expected) {
     let res = areEqual(actual, expected)
     if(!res){
-        console.log('OK')
+        console.log('OK. Объекты равны.')
     }
     else{
-        console.log(`Ошибка. ${res}`)
+        console.log(`Ошибка. Путь до неидентичного свойства: ${res}`)
     }
 }
 
