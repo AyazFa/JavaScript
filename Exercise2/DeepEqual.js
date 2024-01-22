@@ -15,8 +15,21 @@ const bear = {
 };
 const arr1 = [0,1,2,3];
 const arr2 = [0,1,2,4];
+const obj1 = null;
+const obj2 = { a:1 };
+const obj3 = null;
+const arr3 = [0,null,2,3];
+const arr4 = [0,1,2,4];
 
 function areEqual(actual, expected) {
+    if (actual === null) {
+        if (expected === null){
+            return '';
+        }
+        else {
+            return 'Сравниваемые элементы не равны';
+        }
+    }
     if (typeof actual !== typeof expected){
         return 'Разные типы';
     }
@@ -97,8 +110,26 @@ function deepEqual(actual,expected) {
     }
 }
 
+console.log('Сравнение arr3 и arr4: ')
+deepEqual(arr3,arr4)
+
+console.log('Сравнение obj1 и obj3: ')
+deepEqual(obj1,obj3)
+
+console.log('Сравнение obj1 и obj2: ')
+deepEqual(obj1,obj2)
+
+console.log('Сравнение 1 и 2: ')
 deepEqual(1,2)
+
+console.log('Сравнение arr1 и arr2: ')
 deepEqual(arr1, arr2)
+
+console.log('Сравнение cat и shark: ')
 deepEqual(cat, shark)
+
+console.log('Сравнение cat и cat: ')
 deepEqual(cat, cat)
+
+console.log('Сравнение cat и bear: ')
 deepEqual(cat, bear)
