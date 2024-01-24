@@ -1,32 +1,24 @@
-const path = require('path')
-const fs = require('fs')
-const rootPath = path.resolve('node') 
+const { resolve, basename } = require('path');
+const { readdir } = require('fs').promises;
 
-let rootObj = {}
-function tree(obj, currentPath, depth) {
-    fs.readdir(currentPath, { withFileTypes: true }, (err, elements) => {
-        if(err){
-            console.log(err)
-            return
+let level = 0;
+async function* getFiles(dir) {
+    console.log("-".repeat(level), basename(dir));
+    level = level + 1;    
+    const dirents = await readdir(dir, { withFileTypes: true });
+    for (const dirent of dirents) {
+        const res = resolve(dir, dirent.name);
+        if (dirent.isDirectory()) {
+            yield* getFiles(res);
+        } else {
+            yield `${"- ".repeat(level)}${basename(res)}`;
         }
-        let rootPathName = path.basename(currentPath)
-        obj.name = rootPathName
-        obj.items = []
-        for (let element of elements){          
-            let itemName = element.name
-            elementObj = {}
-            elementObj.name = itemName            
-            if(element.isDirectory()){
-                elementObj.items = []
-                obj.items.push(elementObj)
-                let itemPath = path.join(currentPath,itemName)                
-                tree(elementObj, itemPath,depth)
-            }
-            else{
-                obj.items.push(elementObj)
-            }
-        }     
-    });
+    }
+    level = 1;
 }
 
-tree(rootObj, rootPath, 2)
+;(async () => {
+    for await (const f of getFiles('Exercise3/node')) {
+      console.log(f);
+    }
+  })()
