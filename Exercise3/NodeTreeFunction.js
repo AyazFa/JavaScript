@@ -1,28 +1,32 @@
 const path = require('path')
 const fs = require('fs')
-const myPath = path.resolve('Exercise3/node') 
+const rootPath = path.resolve('node') 
 
-function tree(rootPath, depth) {
-    fs.readdir(rootPath, {withFileTypes: true}, (err, elements) => {
+let rootObj = {}
+function tree(obj, currentPath, depth) {
+    fs.readdir(currentPath, { withFileTypes: true }, (err, elements) => {
         if(err){
             console.log(err)
             return
         }
-        let rootPathName = path.basename(myPath)
-        for (let i=0; i<elements.length; i++){
-            let item = elements[i]           
-            let itemName = item.name
-            if(item.isDirectory()){
-                console.log(itemName)
-                let itemPath = path.join(myPath,itemName)                
-                tree(itemPath)
+        let rootPathName = path.basename(currentPath)
+        obj.name = rootPathName
+        obj.items = []
+        for (let element of elements){          
+            let itemName = element.name
+            elementObj = {}
+            elementObj.name = itemName            
+            if(element.isDirectory()){
+                elementObj.items = []
+                obj.items.push(elementObj)
+                let itemPath = path.join(currentPath,itemName)                
+                tree(elementObj, itemPath,depth)
             }
             else{
-                console.log(itemName)
+                obj.items.push(elementObj)
             }
-
-        }      
+        }     
     });
 }
 
-tree(myPath, 2)
+tree(rootObj, rootPath, 2)
