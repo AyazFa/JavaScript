@@ -16,8 +16,11 @@ else{
 }
 
 let level = 0;
+let dirs = 0;
+let files = 0;
 async function* getFiles(dir,depth) {
     console.log("- ".repeat(level), basename(dir));
+    dirs = dirs + 1;
     level = level + 1; 
     if (level > depth){
         level = level - 1;
@@ -29,6 +32,7 @@ async function* getFiles(dir,depth) {
         if (dirent.isDirectory()) {
             yield* getFiles(res,depth);
         } else {
+            files = files + 1;
             yield `${"- ".repeat(level)}${basename(res)}`;
         }
     }
@@ -39,4 +43,5 @@ async function* getFiles(dir,depth) {
     for await (const f of getFiles(rootPath,rootDepth)) {
       console.log(f);
     }
+    console.log(`${dirs} directories, ${files} files`)
   })()
