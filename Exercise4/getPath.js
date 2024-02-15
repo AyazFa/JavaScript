@@ -5,8 +5,10 @@ function getPath(element) {
     let selectorElement = parents.join(' ');
     if (isSelectorUnique(selectorElement)) {
         console.log(`Уникальный селектор элемента: ${selectorElement}`)
+        return selectorElement;
     } else {
         console.log('Не найдено уникальных селекторов');
+        return '';
     }
 
     function getParentSelector(element) {
@@ -17,7 +19,6 @@ function getPath(element) {
         }
         parents.reverse();
         return parents;
-
     }
 
     function getElementAttributes(element) {
@@ -40,7 +41,7 @@ function getPath(element) {
     }
 
     function isSelectorUnique(selector) {
-        let uniqueElement = dom.window.document.querySelectorAll(selector);
+        let uniqueElement = dom.window.document.querySelectorAll(selector.toLowerCase());
         return (uniqueElement.length === 1);
     }
 }
