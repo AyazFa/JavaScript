@@ -1,25 +1,25 @@
 const fs = require('fs');
+const { Transform } = require("stream");
 const fileName = process.argv[2];
 
-function read(filePath) {
-  const readableStream = fs.createReadStream(filePath, "utf-8");
+const readableStream = fs.createReadStream(fileName, "utf-8");
+const transformedData = fs.createWriteStream(`transformed_${fileName}`)
 
-  readableStream.on('error', function (error) {
-      console.log(`error: ${error.message}`);
-  })
+const processData = new Transform({
+  transform(chunk, encoding, callback){
+    const transformResult = processChunk(chunk);
+    callback(null, transformResult);
+  },
+});
 
-  readableStream.on('data', (chunk) => {
-    console.log(processData(chunk));
-  })
-}
-
-function processData(line) {
+function processChunk(chunk) {
   const counts = [];
+  const line = chunk.toString();
   const array = line.replace(/[^a-zA-Z]+/g, ' ').split(' ').sort();
   array.forEach(function(element) {
     counts[element] = (counts[element] || 0) + 1;
   });
-  return counts; 
+  return counts.toString();
 }
 
-read(fileName);
+readableStream.pipe(processData).pipe(transformedData);
