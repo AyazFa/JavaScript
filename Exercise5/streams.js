@@ -14,12 +14,16 @@ const processData = new Transform({
 
 function processChunk(chunk) {
   const counts = [];
+  const resultArr = [];
   const line = chunk.toString();
   const array = line.replace(/[^a-zA-Z]+/g, ' ').split(' ').sort();
   array.forEach(function(element) {
     counts[element] = (counts[element] || 0) + 1;
   });
-  return counts.toString();
+  for (let item in counts){
+    resultArr.push(counts[item]);
+  }
+  return resultArr.toString();
 }
 
 readableStream.pipe(processData).pipe(transformedData);
