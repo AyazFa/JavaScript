@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Tom",
+      "roleId": 2,
+      "organization": "Amazon",
+      "skills": [
+        "Angular,Typescript"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Jack",
+      "roleId": 3,
+      "organization": "Mcrosoft",
+      "skills": [
+        "DotNet"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Mark",
+      "roleId": 1,
+      "organization": "Otus",
+      "skills": [
+        "TypeScript, Docker, NestJs"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Josh",
+      "roleId": 1,
+      "organization": "IBM",
+      "skills": [
+        "Analytics"
+      ],
+      "createdAt": "4/11/2024, 11:18:35 AM"
+    },
+    {
+      "id": 1,
+      "name": "Bob",
+      "roleId": 1,
+      "organization": "Google",
+      "skills": [
+        "DevOps"
+      ],
+      "createdAt": "4/11/2024, 12:08:20 PM"
+    }
+  ]
+}
