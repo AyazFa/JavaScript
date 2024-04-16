@@ -4,12 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
+const { swaggerDocs: V1SwaggerDocs } = require('./v1/swagger');
 
 var indexRouter = require('./v1/routes/index');
 var usersRouter = require('./v1/routes/users');
 var tasksRouter = require('./v1/routes/tasks');
-var rolesRouter = require('./v1/routes/roles');
-
 var app = express();
 
 // view engine setup
@@ -27,7 +26,8 @@ app.use(bodyParser.json());
 app.use('/api/v1', indexRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/tasks', tasksRouter);
-app.use('/api/v1/roles', rolesRouter);
+
+V1SwaggerDocs(app, 3000);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,51 +1,53 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "Tom",
-      "roleId": 2,
-      "organization": "Amazon",
+      "id": "2b047f5a-a653-40b3-9a94-31acdf9ab0a4",
+      "name": "Larry",
+      "role": "Professor",
+      "organization": "Goodyear",
       "skills": [
-        "Angular,Typescript"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Jack",
-      "roleId": 3,
-      "organization": "Mcrosoft",
-      "skills": [
-        "DotNet"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Mark",
-      "roleId": 1,
-      "organization": "Otus",
-      "skills": [
-        "TypeScript, Docker, NestJs"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Josh",
-      "roleId": 1,
-      "organization": "IBM",
-      "skills": [
-        "Analytics"
+        "Data Scientist"
       ],
-      "createdAt": "4/11/2024, 11:18:35 AM"
+      "createdAt": "4/12/2024, 12:00:13 PM"
     },
     {
-      "id": 1,
-      "name": "Bob",
-      "roleId": 1,
+      "id": "7798473a-4759-41d0-a513-954f25a852d3",
+      "name": "CharlieXCX",
+      "role": "Developer",
       "organization": "Google",
       "skills": [
+        "Data science",
         "DevOps"
       ],
-      "createdAt": "4/11/2024, 12:08:20 PM"
+      "createdAt": "4/20/2022, 2:21:56 PM",
+      "updatedAt": "4/15/2024, 9:17:51 AM"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "3df9a171-282e-47ad-9b5c-6472bb4c769d",
+      "name": "Frontend. Develop",
+      "description": "Implement Frontend",
+      "type": "Technical task",
+      "userId": "7798473a-4759-41d0-a513-954f25a852d3",
+      "state": "planned"
+    },
+    {
+      "id": "3df9a171-282e-471d-9b5c-6472bb4c769d",
+      "name": "Dackend. Develop",
+      "description": "Implement Backend",
+      "type": "Technical task",
+      "userId": "2b047f5a-a653-40b3-9a94-31acdf9ab0a4",
+      "state": "closed"
+    },
+    {
+      "id": "2ee403a6-5743-49ab-9fa4-425d0e60daf7",
+      "name": "Tommy V",
+      "description": "Implement CRUD",
+      "type": "Technical",
+      "userId": "3df9a171-282e-47ad-9b5c-6472bb4c669d",
+      "state": "active",
+      "createdAt": "4/15/2024, 6:52:53 AM"
     }
   ]
 }
