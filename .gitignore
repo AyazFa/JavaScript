@@ -1,5 +1,6 @@
 /node_modules
 /package.json
 /package-lock.json
-/Lesson17/node_modules
 /Exercise6/node_modules
+/Lesson17/node_modules
+/Lesson17/dist
