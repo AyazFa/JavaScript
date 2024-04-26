@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: leet_clone_container    
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "leet_clone"
+      POSTGRES_USER: "otus"
+      POSTGRES_PASSWORD: "202312"
+      PGDATA: "/var/lib/postgresql/data/pgdata"      
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+      - .:/var/lib/postgresql/data            
+    ports:
+      - "5432:5432"    
