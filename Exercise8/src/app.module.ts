@@ -16,6 +16,7 @@ import { Task } from "./tasks/entities/task.entity"
       username: 'otus',
       password: '202312',
       database: 'leet_clone',
+      entities: [User, Task],
       synchronize: true     
     }),
     TypeOrmModule.forFeature([User, Task]),

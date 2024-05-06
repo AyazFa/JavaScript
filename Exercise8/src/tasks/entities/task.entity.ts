@@ -1,21 +1,31 @@
-import { Entity, Column } from "typeorm";
+import { Entity, Column, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { User } from '../../users/entities/user.entity';
+import { ApiProperty } from "@nestjs/swagger";
+
 @Entity()
 export class Task {
-    @Column()
+    @PrimaryColumn()
+    @ApiProperty({ description: "Task identifier", nullable: false })    
     id: string;
 
-    @Column()   
+    @Column()
+    @ApiProperty({ description: "Task name", nullable: false })       
     name: string; 
     
-    @Column()    
+    @Column()
+    @ApiProperty({ description: "Task description", nullable: false })          
     description: string;
 
-    @Column()    
+    @Column()
+    @ApiProperty({ description: "Task type", nullable: false })         
     type: string; 
     
-    @Column()    
-    userId: string; 
+    @JoinColumn()
+    @OneToOne(() => User)
+    @ApiProperty({ description: "User identifier", nullable: false })        
+    user: string; 
     
-    @Column()    
+    @Column()
+    @ApiProperty({ description: "Task state", nullable: false })        
     state: string; 
 }
