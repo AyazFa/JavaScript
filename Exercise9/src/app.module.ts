@@ -14,7 +14,7 @@ import { Task } from "./tasks/entities/task.entity"
       host: 'dpg-cotm9n7109ks73anpfo0-a',
       port: 5432,
       username: 'otus',
-      password: '202312',
+      password: 'A5K0xsrZk1UxCXKDLfyAe2MlOY20Yn0F',
       database: 'leet_clone',
       entities: [User, Task],
       synchronize: true     

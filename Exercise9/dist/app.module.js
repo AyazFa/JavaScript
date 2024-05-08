@@ -26,7 +26,7 @@ exports.AppModule = AppModule = __decorate([
                 host: 'dpg-cotm9n7109ks73anpfo0-a',
                 port: 5432,
                 username: 'otus',
-                password: '202312',
+                password: 'A5K0xsrZk1UxCXKDLfyAe2MlOY20Yn0F',
                 database: 'leet_clone',
                 entities: [user_entity_1.User, task_entity_1.Task],
                 synchronize: true
