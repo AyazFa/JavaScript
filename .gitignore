@@ -1,6 +1,6 @@
-/node_modules
-/package.json
-/package-lock.json
 /Exercise6/node_modules
 /Lesson17/node_modules
 /Lesson17/dist
+/Exercise8/dist
+/Exercise8/node_modules
+/Exercise8/ci/docker-compose/pgdata
